@@ -1,0 +1,93 @@
+Documentación Etapa 1
+===============
+
+En este documento se presenta una guía que permite explicar el funcionamiento del software para la asignatura Redes de Computadores, en el que se busca transmitir datos entre dos computadores que tengan micrófono y parlante.
+
+--------------
+
+-------------
+
+Descripción del Proceso
+------------------
+
+Para esta entrega se ha implementado la primera etapa, es decir la del Análisis de Señales.
+
+> - Análisis de Señales: En esta etapa se proveerán algunos archivos de audio que representan comunicaciones digitales reales o simulaciones. Estas señales son analizadas y procesadas para eliminar el ruido. 
+
+----------------------
+Módulos Generales y su Función
+------------------
+
+En esta sección se describe los módulos que componen el programa y sus funciones, que han sido implementados para la primera entrega.
+
+> - IO: En este módulo se encuentran todas las funciones de entrada y salida, esto incluye Imagenes y Audio.
+> - Plot: En este módulo en encuentran funciones que realizan los gráficos, esto incluye gráfico de señal, Transformada de Fourier, Spectrograma.
+> - Filter: Este módulo cuenta con las funciones que pretenden eliminar el ruido de las señales aplicando diferentes técnicas.
+> - Tools: Módulo que contiene herramientas auxiliares utilizadas.
+
+------------------------
+Resultados
+--------------------
+Al ejecutar el código de prueba para la etapa 1, es decir, el archivo "main.py", en donde se hace el analisis de una
+funcion leída y una escrita, a continuación se muestra el resultado de uno de ellas **"ask-snr=2.wav"** la cual fue
+leída y luego filtrada para quitar ruido.
+
+#### Análisis:
+
+- **Señal en el dominio del Tiempo:**
+
+Primero se obtienen los datos de la señal del archivo de audio, luego se pasan a graficar estos datos, lo cual da como
+resultado el siguiente gráfico:
+
+![img 1](Images/Etapa_1/PlotSignal.png)
+
+Se puede observar que la señal contiene mucho ruido, ya que la señal es irregular y no se puede observar con detalle su
+comportamiento.
+
+- **Señal en el dominio de las Frecuencias (Transformada de Fourier):**
+
+Para poder observar de mejor manera la señal, se realiza un análisis de las frecuencias contenidas en estas, para ello
+se grafica el espectro de ésta, lo cual dió el siguiente resultado:
+
+![img 2](Images/Etapa_1/PlotFFT.png)
+
+Se puede observar que existe una frecuencia predominante, que tiene mayor importancia, además se puede observar con
+mayor detalle la existencia del ruido, y en que frecuencias existe.
+
+- **Gráfico del Espectograma (Tiempo [s] vs Frecuencia [Hz]):**
+
+Ya con los dos gráficos anteriores se pudo realizar un análisis completo de la señal, aún así, no se puede observar como
+cambia la transformada de Fourier en función del tiempo, es por ello que se realiza un espectrograma donde se grafica
+la señal en los ejes Tiempo vs Frecuencia, donde es posible observar como cambian las frecuencias a medida que avanza el tiempo.
+
+![img 3](Images/Etapa_1/Spectrogram.png)
+
+- **Aplicación de Filtro:**
+
+Para poder reducir el ruido existente en la señal se aplica un filtro Butterworth pasabanda, ya que como se tiene una
+frecuencia mas importante que las demás resulta ser útil para eliminar frecuencias indeseadas e intentar solo rescatar la importante.
+
+![img 4](Images/Etapa_1/PlotSignal_filtered.png)
+
+En la imagen anterior se puede apreciar un cambio con respecto a la primera señal graficada, donde se puede observar que
+la señal sigue posee frecuencia determinada.
+
+Para analizar los resultados del filtro aplicado, se grafica nuevamente el espectro de la señal, en este nuevo gráfico
+se puede observar que la señal parece mucho más limpia y sin las frecuencias no deseadas a su alrededor.
+
+![img 5](Images/Etapa_1/PlotFFT_filtered.png)
+
+Finalmente, igual que en el ultimo paso antes del filtro, es interesante observar como se comportan las frecuencias
+de la señal a través del tiempo, por lo que se grafica un espectrograma para poder observarlo.
+
+![img 6](Images/Etapa_1/Spectrogram_filtered.png)
+
+#### Conclusiones Etapa 1:
+
+Distintas señales pueden ser leídas de archivos de audio .wav o incluso creadas y guardadas en archivos del mismo formato.
+
+Al observar el espectro de la señal utilizada en los experimentos, se puede notar la predominancia de una frecuencia
+específica, lo cual concuerda ya que la señal parece seguir una sinusoide, esto se puede observar en el gráfico 1.
+
+Los espectrogramas son bastante útiles para observar como evolucionan las frecuencias de una señal a lo largo de un tiempo
+determinado, información que no puede ser extraída de los otros gráficos anteriormente realizados.
